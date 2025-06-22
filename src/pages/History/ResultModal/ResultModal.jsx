@@ -1,4 +1,3 @@
-// ResultModal.jsx
 import { createPortal } from "react-dom";
 import styles from "./ResultModal.module.css";
 import { ResultsDisplay } from "../../CSVanalytics/ResultsDisplay/ResultsDisplay";

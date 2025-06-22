@@ -24,7 +24,6 @@ export const generateReport = async () => {
 
     return { success: true };
   } catch (error) {
-    console.error("Ошибка генерации отчета:", error);
     return { success: false, error: error.message };
   }
 };

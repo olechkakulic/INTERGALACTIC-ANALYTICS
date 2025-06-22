@@ -14,7 +14,7 @@ export function History() {
 
         <div className={style.buttonsContainer}>
           <NavLink to="/csvgenerate" className={style.generateLink}>
-            <button className={style.generateButton}>Сгенерировать еще</button>
+            <button className={style.generateButton}>Сгенерировать больше</button>
           </NavLink>
 
           <button onClick={clearHistory} className={style.clearButton}>

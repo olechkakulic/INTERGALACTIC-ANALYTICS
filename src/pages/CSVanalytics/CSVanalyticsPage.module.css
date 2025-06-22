@@ -28,8 +28,8 @@
   }
   
   .submitButton {
-    background-color: #201b10;
-    color: white;
+    background-color: #2AE881;
+    color: #201B10;
     border: none;
     padding: 15px 30px;
     font-size: 16px;
@@ -60,4 +60,14 @@
   
   @keyframes spin {
     to { transform: rotate(360deg); }
+  }
+  .highlightsPlaceholder {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 0px;
+    line-height: 110%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #CB81FF;
+    margin-top: 30px;
   }

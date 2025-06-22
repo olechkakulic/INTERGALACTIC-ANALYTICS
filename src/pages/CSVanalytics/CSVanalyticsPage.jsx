@@ -1,24 +1,21 @@
+// CSVanalyticsPage.js
+import { useState } from "react";
 import { Header } from "../../components/Header/Header";
 import styles from "./CSVanalyticsPage.module.css";
 import { FileDropzone } from "./FileDropZone/FileDropZone";
 import { ResultsDisplay } from "./ResultsDisplay/ResultsDisplay";
-import {useCSVProcessing } from "./api/useCSVProcessing.js";
-
+import { useCSVProcessing } from "./api/useCSVProcessing.js";
 
 export function CSVanalytics() {
+  const [submitted, setSubmitted] = useState(false);
   const fixedFileName = "file_uploaded_1.csv";
-  const {
-    file,
-    status,
-    results,
-    handleFileChange,
-    processFile,
-    reset,
-  } = useCSVProcessing(fixedFileName);
+  const { file, status, results, handleFileChange, processFile, reset } =
+    useCSVProcessing(fixedFileName);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return;
+    setSubmitted(true); 
     await processFile(file);
   };
 
@@ -40,10 +37,22 @@ export function CSVanalytics() {
           fixedFileName={fixedFileName}
         />
 
-        {status === "fileSelected" && (
-          <button className={styles.submitButton} onClick={handleSubmit}>
+        {!submitted && (
+          <button
+            className={`${styles.submitButton} ${
+              file ? styles.submitButtonActive : ""
+            }`}
+            onClick={handleSubmit}
+            disabled={!file || status === "uploading"}
+          >
             Отправить
           </button>
+        )}
+
+        {status === "idle" && (
+          <div className={styles.highlightsPlaceholder}>
+            Здесь появятся хайлайты
+          </div>
         )}
 
         {(status === "uploading" || status === "success") && results && (

@@ -16,7 +16,7 @@ export const GeneratorButton = ({ status, onGenerate }) => {
   const buttonText = {
     start: "Начать генерацию",
     loading: "",
-    success: "done!",
+    success: "Done!",
     error: "Ошибка",
   };
 
