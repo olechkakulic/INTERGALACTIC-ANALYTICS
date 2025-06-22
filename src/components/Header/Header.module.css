@@ -1,7 +1,7 @@
 .header {
-  display: flex; /* заменить grid на flex */
+  display: flex; 
   align-items: center;
-  justify-content: space-between; /* или flex-start, если надо */
+  justify-content: space-between;
   gap: 20px;
   padding: clamp(20px, 3vw, 40px);
   width: 100%;

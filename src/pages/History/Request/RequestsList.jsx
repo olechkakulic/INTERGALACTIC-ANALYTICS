@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Request } from "./Request";
-import { ResultModal } from "../ResultModal/ResultModal"; // создадим её
+import { ResultModal } from "../ResultModal/ResultModal";
 
 export function RequestList({ requests, onDelete }) {
   const [selectedRequest, setSelectedRequest] = useState(null);

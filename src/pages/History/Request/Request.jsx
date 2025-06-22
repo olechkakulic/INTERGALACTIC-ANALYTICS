@@ -3,13 +3,13 @@ import styles from "./Request.module.css";
 export function Request({ title, data, status, onDelete }) {
   return (
     <div className={styles.requestRow}>
-      {/* Название файла */}
+
       <div className={styles.titleCell}>
         <img src="assets/history/akar-icons_file.png" alt="file" />
         <span>{title}</span>
       </div>
 
-      {/* Дата */}
+
       <div className={styles.dataCell}>
         <span>{data}</span>
       </div>
@@ -25,7 +25,6 @@ export function Request({ title, data, status, onDelete }) {
         </div>
       </div>
 
-      {/* Кнопка удаления */}
       <div className={styles.deleteCell}>
         <button className={styles.deleteButton} onClick={onDelete}>
           <img src="assets/history/Trash.png" alt="trash" />
