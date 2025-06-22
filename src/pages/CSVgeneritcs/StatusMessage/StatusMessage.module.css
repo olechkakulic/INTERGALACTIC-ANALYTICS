@@ -1,0 +1,8 @@
+.statusMessage {
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+  }
+  
+  .error {
+    color: #FF5F00;
+  }

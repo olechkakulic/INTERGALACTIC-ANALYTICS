@@ -1,0 +1,46 @@
+.button {
+  padding: 12px 24px;
+  background: #2ae881;
+  color: black;
+  font-family: "Roboto", sans-serif;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: all 0.3s;
+  width: 200px;
+  height: 48px; 
+}
+
+.button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.loading {
+  background: #cb81ff;
+}
+
+.success {
+  background: #2ae881;
+}
+
+.error {
+  background: #ff6b6b;
+}
+
+.loadingIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,65 @@
+.header {
+  display: flex; /* заменить grid на flex */
+  align-items: center;
+  justify-content: space-between; /* или flex-start, если надо */
+  gap: 20px;
+  padding: clamp(20px, 3vw, 40px);
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  gap: clamp(5px, 1vw, 9px);
+}
+
+.logo {
+  width: clamp(150px, 12vw, 228px);
+  height: auto;
+  aspect-ratio: 228/54; 
+}
+
+.title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: clamp(16px, 2vw, 30px);
+  background-color: #cb81ff;
+  color: #201b10;
+  padding: clamp(4px, 0.5vw, 8px) clamp(8px, 1vw, 16px);
+  white-space: nowrap;
+  margin-right: clamp(20px, 12vw, 238px);
+}
+
+.nav {
+  display: flex;
+  gap: clamp(10px, 3vw, 40px);
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(2px, 0.5vw, 4px);
+  text-decoration: none;
+  color: #201b10;
+  font-family: "Roboto", sans-serif;
+  font-size: clamp(16px, 2vw, 30px);
+  font-weight: 400;
+  padding: clamp(4px, 0.5vw, 8px) 0;
+  white-space: nowrap;
+}
+
+.navItem img {
+  width: clamp(24px, 3vw, 40px);
+  height: clamp(24px, 3vw, 40px);
+  object-fit: contain;
+}
+
+.active {
+  border-bottom: clamp(2px, 0.2vw, 3px) solid #000;
+}

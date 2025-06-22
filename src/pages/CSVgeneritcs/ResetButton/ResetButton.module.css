@@ -1,0 +1,15 @@
+.resetButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.resetButton:hover {
+  opacity: 0.8;
+}
+.resetIcon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}

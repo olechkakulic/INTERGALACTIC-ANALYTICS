@@ -1,0 +1,50 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.buttonsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+  width: 100%;
+}
+
+.generateButton {
+  background-color: #2AE881;
+  color: #201B10;
+  border: none;
+  padding: 12px 24px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.clearButton {
+  background-color: #201b10;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.clearButton:hover {
+  background-color: #333;
+}
+
+.generateLink {
+  text-decoration: none;
+}
