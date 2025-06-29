@@ -15,7 +15,7 @@ export function CSVanalytics() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!file) return;
-    setSubmitted(true); 
+    setSubmitted(true);
     await processFile(file);
   };
 
@@ -49,7 +49,7 @@ export function CSVanalytics() {
           </button>
         )}
 
-        {status === "idle" && (
+        {!results && (
           <div className={styles.highlightsPlaceholder}>
             Здесь появятся хайлайты
           </div>
