@@ -9,8 +9,8 @@ beforeEach(() => {
   window.HTMLAnchorElement.prototype.click = jest.fn();
 });
 
-describe('generateReport API', () => {
-  it('должна быть успешная генерация', async () => {
+describe('API generateReport', () => {
+  it('успешно генерирует отчёт и скачивает файл', async () => {
     const mockBlob = new Blob(['id,name\n1,Alice'], { type: 'text/csv' });
 
     fetch.mockResolvedValue({
@@ -26,15 +26,16 @@ describe('generateReport API', () => {
     expect(window.HTMLAnchorElement.prototype.click).toHaveBeenCalled();
   });
 
-  it('должно справляться с ошибками сети', async () => {
+  it('обрабатывает ошибки сети и возвращает соответствующий объект', async () => {
     fetch.mockReject(new Error('Network error'));
 
     const result = await generateReport();
+
     expect(result.success).toBe(false);
     expect(result.error).toBe('Network error');
   });
 
-  it('должен вызывать апи с правильными параметрами', async () => {
+  it('вызывает API с корректными параметрами запроса', async () => {
     const mockBlob = new Blob(['test'], { type: 'text/csv' });
 
     fetch.mockResolvedValue({

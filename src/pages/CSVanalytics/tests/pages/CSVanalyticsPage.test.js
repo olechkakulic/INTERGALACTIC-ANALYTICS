@@ -37,7 +37,7 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue(baseMockReturn);
   });
 
-  it('отображает заголовок и неактивную кнопку отправки', () => {
+  it('отображает заголовок и неактивную кнопку отправки при отсутствии файла', () => {
     renderPage();
 
     expect(screen.getByText(/Загрузите/)).toBeInTheDocument();
@@ -47,7 +47,7 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     expect(submitBtn).toBeDisabled();
   });
 
-  it('активирует кнопку отправки при выборе файла', () => {
+  it('активирует кнопку отправки при выборе CSV-файла', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
       file: new File(['test'], 'file.csv'),
@@ -58,7 +58,7 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     expect(submitBtn).toBeEnabled();
   });
 
-  it('вызывает processFile при отправке', async () => {
+  it('вызывает processFile при клике на кнопку отправки', async () => {
     const file = new File(['test'], 'file.csv');
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
@@ -73,19 +73,19 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     });
   });
 
-  it('отображает компонент результатов при успешной обработке', () => {
+  it('показывает компонент результатов при успешной обработке файла', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
       file: new File(['test'], 'file.csv'),
       status: 'success',
-      results: { },
+      results: {},
     });
 
     renderPage();
     expect(screen.getByTestId('results-display')).toBeInTheDocument();
   });
 
-  it('отображает заглушку для результатов при их отсутствии', () => {
+  it('отображает заглушку "Здесь появятся хайлайты" при отсутствии результатов', () => {
     renderPage();
     expect(screen.getByText('Здесь появятся хайлайты')).toBeInTheDocument();
   });

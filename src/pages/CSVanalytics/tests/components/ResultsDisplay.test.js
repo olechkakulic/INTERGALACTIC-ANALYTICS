@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 import { ResultsDisplay } from '../../ResultsDisplay/ResultsDisplay';
 import React from 'react';
 
-describe('Компонент отображения результатов ResultsDisplay', () => {
+describe('Компонент ResultsDisplay', () => {
   const mockResults = {
     totalSpendGalactic: 1000,
     processedRecords: 50,
@@ -10,7 +10,7 @@ describe('Компонент отображения результатов Resul
     maxSpendingCivilization: 'monsters',
   };
 
-  it('корректно отображает все результаты', () => {
+  it('корректно отображает все поля результата', () => {
     const { getByText } = render(<ResultsDisplay results={mockResults} />);
     
     expect(getByText('1,000')).toBeInTheDocument();

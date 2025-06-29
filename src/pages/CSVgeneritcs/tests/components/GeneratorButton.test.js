@@ -1,8 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import { GeneratorButton } from '../../GenerateButton/GenerateButton';
 
-describe('GeneratorButton', () => {
-  it('кнопка должна быть неактивной вовремя загрузки и после успешной генерации', () => {
+describe('Компонент GeneratorButton', () => {
+  it('кнопка неактивна во время загрузки и после успешной генерации', () => {
     const mockOnGenerate = jest.fn();
 
     const { rerender } = render(
@@ -18,6 +18,6 @@ describe('GeneratorButton', () => {
 
     const [doneButton, resetButton] = screen.getAllByRole('button');
     expect(doneButton).toBeDisabled();
-    expect(resetButton).toBeEnabled(); 
+    expect(resetButton).toBeEnabled();
   });
 });
