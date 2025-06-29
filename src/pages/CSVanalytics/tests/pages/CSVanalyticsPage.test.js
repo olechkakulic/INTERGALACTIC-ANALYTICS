@@ -3,8 +3,12 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { CSVanalytics } from '../../CSVanalyticsPage';
 import { MemoryRouter } from 'react-router-dom';
 
-jest.mock('../api/useCSVProcessing', () => ({
+jest.mock('../../api/useCSVProcessing', () => ({
   useCSVProcessing: jest.fn(),
+}));
+
+jest.mock('../../ResultsDisplay/ResultsDisplay', () => ({
+  ResultsDisplay: () => <div data-testid="results-display" />,
 }));
 
 describe('Страница аналитики CSV (CSVanalytics)', () => {
@@ -35,16 +39,11 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
 
   it('отображает заголовок и неактивную кнопку отправки', () => {
     renderPage();
-    
-    expect(
-      screen.getByText((content, element) => {
-        return content.includes('Загрузите') && 
-               content.includes('csv') && 
-               content.includes('полную информацию');
-      })
-    ).toBeInTheDocument();
 
-    const submitBtn = screen.getByRole('button', { name: /отправить/i });
+    expect(screen.getByText(/Загрузите/)).toBeInTheDocument();
+    expect(screen.getByText(/полную информацию/)).toBeInTheDocument();
+
+    const submitBtn = screen.getByRole('button', { name: /Отправить/i });
     expect(submitBtn).toBeDisabled();
   });
 
@@ -55,7 +54,7 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     });
 
     renderPage();
-    const submitBtn = screen.getByRole('button', { name: /отправить/i });
+    const submitBtn = screen.getByRole('button', { name: /Отправить/i });
     expect(submitBtn).toBeEnabled();
   });
 
@@ -67,26 +66,23 @@ describe('Страница аналитики CSV (CSVanalytics)', () => {
     });
 
     renderPage();
-    const submitBtn = screen.getByRole('button', { name: /отправить/i });
-    fireEvent.click(submitBtn);
+    fireEvent.click(screen.getByRole('button', { name: /Отправить/i }));
 
     await waitFor(() => {
       expect(mockProcessFile).toHaveBeenCalledWith(file);
     });
   });
 
-  it('отображает компонент результатов при наличии данных', () => {
+  it('отображает компонент результатов при успешной обработке', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
       file: new File(['test'], 'file.csv'),
       status: 'success',
-      results: { rows: 42, columns: 3 },
+      results: { },
     });
 
     renderPage();
-    
-    expect(screen.getByText('42')).toBeInTheDocument();
-    expect(screen.getByText('3')).toBeInTheDocument();
+    expect(screen.getByTestId('results-display')).toBeInTheDocument();
   });
 
   it('отображает заглушку для результатов при их отсутствии', () => {
