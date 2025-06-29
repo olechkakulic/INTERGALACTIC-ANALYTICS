@@ -20,14 +20,13 @@ jest.mock("./pages/History/HistoryPage", () => ({
   History: () => <div>History Page Mock</div>,
 }));
 
-// Тесты без изменений
-describe("App Navigation", () => {
-  test("should render CSV analytics page by default", async () => {
+describe("Навигация по приложению", () => {
+  test("по умолчанию отображается страница аналитики CSV", async () => {
     render(<App />);
     expect(await screen.findByText("CSV Analytics Page")).toBeInTheDocument();
   });
 
-  test("should navigate to CSV generator page when clicking the link", async () => {
+  test("переход на страницу генератора CSV при клике по ссылке", async () => {
     render(<App />);
 
     await screen.findByText("CSV Analytics Page");
@@ -39,7 +38,7 @@ describe("App Navigation", () => {
     ).toBeInTheDocument();
   });
 
-  test("should navigate to History page when clicking the link", async () => {
+  test("переход на страницу истории при клике по ссылке", async () => {
     render(<App />);
 
     await screen.findByText("CSV Analytics Page");

@@ -3,9 +3,8 @@ import { render, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { FileDropzone } from '../../FileDropZone/FileDropZone';
 
-
-describe('FileDropzone Component', () => {
-  it('rejects non-CSV files', () => {
+describe('Компонент загрузки файлов FileDropzone', () => {
+  it('отклоняет файлы, не являющиеся CSV', () => {
     const mockOnFileSelect = jest.fn();
     const { container } = render(
       <FileDropzone onFileSelect={mockOnFileSelect} status="idle" />

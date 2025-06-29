@@ -7,7 +7,7 @@ jest.mock('../api/useCSVProcessing', () => ({
   useCSVProcessing: jest.fn(),
 }));
 
-describe('CSVanalytics Page', () => {
+describe('Страница аналитики CSV (CSVanalytics)', () => {
   const mockProcessFile = jest.fn();
   const mockHandleFileChange = jest.fn();
   const mockReset = jest.fn();
@@ -33,10 +33,9 @@ describe('CSVanalytics Page', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue(baseMockReturn);
   });
 
-  it('renders title and submit button (disabled)', () => {
+  it('отображает заголовок и неактивную кнопку отправки', () => {
     renderPage();
     
-    // Используем более гибкий поиск текста
     expect(
       screen.getByText((content, element) => {
         return content.includes('Загрузите') && 
@@ -49,7 +48,7 @@ describe('CSVanalytics Page', () => {
     expect(submitBtn).toBeDisabled();
   });
 
-  it('enables submit button when file is selected', () => {
+  it('активирует кнопку отправки при выборе файла', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
       file: new File(['test'], 'file.csv'),
@@ -60,7 +59,7 @@ describe('CSVanalytics Page', () => {
     expect(submitBtn).toBeEnabled();
   });
 
-  it('calls processFile on submit', async () => {
+  it('вызывает processFile при отправке', async () => {
     const file = new File(['test'], 'file.csv');
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
@@ -76,7 +75,7 @@ describe('CSVanalytics Page', () => {
     });
   });
 
-  it('shows ResultsDisplay when results are available', () => {
+  it('отображает компонент результатов при наличии данных', () => {
     require('../../api/useCSVProcessing').useCSVProcessing.mockReturnValue({
       ...baseMockReturn,
       file: new File(['test'], 'file.csv'),
@@ -86,12 +85,11 @@ describe('CSVanalytics Page', () => {
 
     renderPage();
     
-    // Ищем конкретные числа в результатах
     expect(screen.getByText('42')).toBeInTheDocument();
     expect(screen.getByText('3')).toBeInTheDocument();
   });
 
-  it('shows highlights placeholder when no results yet', () => {
+  it('отображает заглушку для результатов при их отсутствии', () => {
     renderPage();
     expect(screen.getByText('Здесь появятся хайлайты')).toBeInTheDocument();
   });
