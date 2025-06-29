@@ -1,6 +1,8 @@
 # Инструкция по запуску тестов
 ---
 ( привет проверяющему! если у вас не запускается что-то из-за зависимостей напишите мне пожалуйста в телеграмм @krinzhymer'. у меня какие-то жесткие траблы с ними возникли..)
+НЕ РЕАЛИЗОВАНО:
+История загрузок (ключевой запрос от клиентов), хранимая в LocalStorage
 ## Типы тестов
 
 Проект включает несколько уровней тестирования:
@@ -81,10 +83,10 @@ my-react-app/
     │   │   ├── ResultsDisplay/
     │   │   ├── tests/
     │   │   │   ├── components/
-    │   │   │   │   ├── FileDropzone.test.js
-    │   │   │   │   └── ResultsDisplay.test.js
+    │   │   │   │   ├── FileDropzone.test.js - тест для компонента
+    │   │   │   │   └── ResultsDisplay.test.js - тест для компонента
     │   │   │   └── pages/
-    │   │   │       └── CSVanalyticsPage.test.js
+    │   │   │       └── CSVanalyticsPage.test.js - тест для странички
     │   │   ├── CSVanalyticsPage.jsx
     │   │   └── CSVanalyticsPage.module.css
     │   │
@@ -94,24 +96,24 @@ my-react-app/
     │   │   ├── ResetButton/
     │   │   ├── tests/
     │   │   │   ├── api/
-    │   │   │   │   └── generateReport.test.js
+    │   │   │   │   └── generateReport.test.js - тест для отправки запроса
     │   │   │   ├── components/
-    │   │   │   │   ├── GeneratorButton.test.js
-    │   │   │   │   └── StatusMessage.test.js
+    │   │   │   │   ├── GeneratorButton.test.js - тест для компонента
+    │   │   │   │   └── StatusMessage.test.js - тест для компонента
     │   │   │   └── pages/
-    │   │   │       └── CsvGeneratorPage.test.js
+    │   │   │       └── CsvGeneratorPage.test.js - тест для странички
     │   │   ├── CsvGeneratorPage.jsx
     │   │   └── CSVgenericsPage.module.css
     │   │
     │   └── History/
     │       ├── store/
-    │       │   └── historyStore.js
+    │       │   └── historyStore.js 
     │       ├── HistoryPage.jsx
     │       └── HistoryPage.module.css
     │
     ├── store/
     ├── App.jsx
-    ├── App.test.js
+    ├── App.test.js - тест для навигации
     └── index.css
 ```
 
